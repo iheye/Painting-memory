@@ -33,9 +33,9 @@
     ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。
     This is a static one-page project, categorized into different styles of pages, you can use it for your personal homepage, but we want you to use these beautiful pages to show every noble person in your life.
 
-    <br><br> 
+
     
-    🎨 项目功能：<br>
+    🎨 项目功能：
 
 
     - 全静态页面，若信息量过大采用JSON格式撰写，动静分离确保可用性<br>
