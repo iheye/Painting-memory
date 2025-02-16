@@ -30,21 +30,18 @@
   <p style="color: #4a4e69; line-height: 1.6; font-size: 1.1rem;">
 
 
-    <!-- 在这里添加项目描述 -->
-
-
-    ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。
+    ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。<br>
     This is a static one-page project, categorized into different styles of pages, you can use it for your personal homepage, but we want you to use these beautiful pages to show every noble person in your life.
 
     <br><br> 
-    🎨 包含酷炫功能：<br>
+    🎨 项目功能：<br>
 
 
-    - 功能亮点 1<br>
+    - 全静态页面，若信息量过大采用JSON格式撰写，动静分离确保可用性<br>
 
-    - 功能亮点 2<br>
+    - 根据不同朋友类型，划分不同页面风格，不拘泥，不放纵<br>
 
-    - 功能亮点 3
+    - 每一个文件夹都是一个个人主页，修改即可开箱使用！
 
   </p>
 </div> 
@@ -68,10 +65,13 @@
 
 
       <li><a href="#installation">安装指南</a></li>
-
+      
+推荐使用GitHub Pages部署，您亦可申请我们的iYun Servers进行部署。
+若使用服务器部署，您可以直接克隆该仓库。
 
       <li><a href="#usage">使用文档</a></li>
-
+      
+每个文件夹下面的单页可以单独拆分使用
 
       <li><a href="#api">API 参考</a></li>
 
