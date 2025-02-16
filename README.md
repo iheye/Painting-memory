@@ -1,6 +1,4 @@
 # Painting-memory  
-With a beautiful page, seal the memory of every passer-by in life.
-
 
 <div align="center">  
 
@@ -35,7 +33,8 @@ With a beautiful page, seal the memory of every passer-by in life.
     <!-- 在这里添加项目描述 -->
 
 
-    ✨ 一个充满活力的现代项目，致力于让开发更简单有趣！
+    ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。
+    This is a static one-page project, categorized into different styles of pages, you can use it for your personal homepage, but we want you to use these beautiful pages to show every noble person in your life.
 
     <br><br> 
     🎨 包含酷炫功能：<br>
