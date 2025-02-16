@@ -6,8 +6,8 @@
 ## 🚀 Painting-memory With a static file, talk about the dynamic past
 
 ![Static Badge](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge&color=20c997)  
-![GitHub Last Commit](https://img.shields.io/github/last-commit/yourname/repo?style=for-the-badge&color=fd7e14)  
-![GitHub Stars](https://img.shields.io/github/stars/yourname/repo?style=for-the-badge&color=ffd43b)  
+![GitHub Last Commit](https://img.shields.io/github/last-commit/iheye/Painting-memory?style=for-the-badge&color=fd7e14)  
+![GitHub Stars](https://img.shields.io/github/stars/iheye/Painting-memory?style=for-the-badge&color=ffd43b)  
 
 <a href="https://github.com/iheye/Painting-memory/stargazers">  
   <img src="https://img.shields.io/github/stars/iheye/Painting-memory?style=social" alt="Star">  
