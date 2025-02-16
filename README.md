@@ -2,7 +2,7 @@
 
 <div align="center">  
 
-# 🚀 友云绘 用静态的文件，讲动态的过去
+# 🚀 友云绘 以代码为诗，定格记忆中的美好
 ## 🚀 Painting-memory With a static file, talk about the dynamic past
 
 ![Static Badge](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge&color=20c997)  
@@ -30,10 +30,11 @@
   <p style="color: #4a4e69; line-height: 1.6; font-size: 1.1rem;">
 
 
-    ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。<br>
+    ✨ 这是一个静态单页项目，以不同风格的页面归类，您固然可以用于个人主页，但是我们更希望您用这些精美的页面，去展现自己生命中的每一位贵人。
     This is a static one-page project, categorized into different styles of pages, you can use it for your personal homepage, but we want you to use these beautiful pages to show every noble person in your life.
 
     <br><br> 
+    
     🎨 项目功能：<br>
 
 
