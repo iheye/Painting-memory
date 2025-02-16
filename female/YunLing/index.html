@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云玲|粉色画卷-友云绘Painting-memory</title>
+    <!--此处引用的为字节静态库的图标，您需要遵守他们的版权协议"http://cdn.bytedance.com/"*/-->
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <style>
+        /* 自定义字体 */
+        @font-face { 
+            font-family: [请填写字体名]; 
+            src: url("[请填写字体外链]");
+        }
+        /*在此请定义两个字体，分别为主字体和从字体，在css部分，你可以通过修改每一个类对应的主从字体，来对页面全局进行更好的掌控*/
+        @font-face {
+            font-family: [请填写字体名];
+            src: url("[请填写字体外链]");
+        }
+
+        /*定义页面全局配色*/
+        :root {
+            --primary: #FFB6C1;
+            --secondary: #FFD7E2; 
+            --bg: #FFF9FB;
+            --text: #5A5A5A;
+            --accent: #C8A2C8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: [需要设定的字体], sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        /* 顶部导航 */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .header button {
+            background: var(--primary);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-family: [需要设定的字体];
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .header button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 抽屉菜单 */
+        .drawer {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.05);
+            padding: 80px 1.5rem;
+            z-index: 999;
+            transition: 0.3s;
+        }
+
+        .drawer.active {
+            left: 0;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .menu-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .menu-nav li {
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .menu-nav li:hover {
+            background: var(--bg);
+            transform: translateX(10px);
+        }
+
+        .sub-menu {
+            list-style: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .sub-menu a {
+            text-decoration: none; /* 移除下划线 */
+            color: inherit;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.2s;
+        }
+
+        .sub-menu a:hover {
+            color: var(--primary);
+        }
+
+        /* 主体内容 */
+        .main-content {
+            margin-top: 100px;
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-family: [需要设定的字体];
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .greeting {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* 计时器模块 */
+        .timer-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin: 2rem auto;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .timer-item {
+            margin: 1.5rem 0;
+        }
+
+        .timer-label {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: [需要设定的字体];
+        }
+
+        .timer {
+            font-size: 1.4rem;
+            color: var(--text);
+            font-family: [需要设定的字体];
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* 按钮样式 */
+        .action-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: [需要设定的字体];
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            margin-top: auto;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.8rem;
+            }
+            .header button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            .name {
+                font-size: 1.8rem;
+            }
+            .timer {
+                font-size: 1.2rem;
+            }
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <button class="menu-btn"><i class="ion-navicon-round"></i> 菜单</button>
+        <div class="announcement">🌸 有你在，一切都好</div>
+        <div class="header-buttons">
+            <a href="javascript:location.reload(true)"><button class="refresh-btn"><i class="ion-refresh"></i></button></a>
+            <button class="share-btn" id="shareButton"><i class="ion-android-share-alt"></i></button>
+        </div>
+    </header>
+
+    <!-- 抽屉菜单 -->
+    <aside class="drawer">
+        <button class="menu-close"><i class="ion-close-round"></i></button>
+        <nav>
+            <ul class="menu-nav">
+                <li>🏠 主站导航
+                    <ul class="sub-menu">
+                        <li><a href="/">主页</a></li>
+                        <li><a href="#">菜单1</a></li>
+                        <li><a href="#">菜单2</a></li>
+                    </ul>
+                </li>
+                <li>👻 栏目导航
+                    <ul class="sub-menu">
+                        <li><a href="#">时光纪念册</a></li>
+                        <li><a href="#">友情手账本</a></li>
+                        <li><a href="#">共同足迹图</a></li>
+                        <li><a href="#">礼物博物馆</a></li>
+                        <li><a href="#">特别纪念日</a></li>
+                    </ul>
+                </li>
+                <li>📜 关于我们</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主体内容 -->
+    <main class="main-content">
+        <img src="#" alt="[填写头像外链]" class="avatar">
+        <h1 class="name">[填写姓名]云玲</h1>
+        <p class="greeting">"以代码为诗，定格记忆中的美好"</p>
+        
+        <div class="timer-box">
+            <div class="timer-item">
+                <div class="timer-label">挚友已约</div>
+                <div class="timer" id="friendsTimer">🤨脚本加载失败咯，请点击右上角刷新按钮</div>
+            </div>
+            <div class="timer-item">
+                <div class="timer-label">相识已约</div>
+                <div class="timer" id="knowTimer">🤨脚本加载失败咯，请点击右上角刷新按钮</div>
+            </div>
+        </div>
+
+        <div class="action-btns">
+            <a href="#" class="btn">📖 故事集</a>
+            <a href="#" class="btn">📮 信箱</a>
+            <a href="#" class="btn">🎞️ 影集</a>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>版权所有 &copy; 2025 何叶. 保留所有权利。开源许可遵循 <a href="https://github.com/iheye/Painting-memory" target="_blank">Mozilla Public License Version 2.0</a></a> |
+        <a href="#" target="_blank" style="text-decoration:none;color:inherit" id="icp">[站点交互代码]</a>|
+        <img src="#g" alt="公安网备图标"><a href="#" target="_blank" style="text-decoration:none;color:inherit" id="mps">[站点交互代码]</a></p>
+    </footer>
+
+    <script>
+        // 菜单交互
+        const drawer = document.querySelector('.drawer');
+        const menuBtn = document.querySelector('.menu-btn');
+        const menuClose = document.querySelector('.menu-close');
+        
+        // 点击菜单按钮切换菜单状态
+        menuBtn.addEventListener('click', () => {
+            if (drawer.classList.contains('active')) {
+                // 如果菜单已经打开，点击菜单按钮则关闭菜单
+                drawer.classList.remove('active');
+            } else {
+                // 如果菜单未打开，点击菜单按钮则打开菜单
+                drawer.classList.add('active');
+            }
+        });
+        
+        // 点击外部关闭菜单
+        document.addEventListener('click', (e) => {
+            if (drawer.classList.contains('active')) {
+                if (!drawer.contains(e.target) && e.target !== menuBtn) {
+                    drawer.classList.remove('active');
+                }
+            }
+        });
+
+        // 阻止菜单点击冒泡
+        drawer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        menuBtn.addEventListener('click', () => {
+            drawer.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            drawer.classList.remove('active');
+        });
+
+        // 按钮交互示例
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // 正计时功能
+        class TimeCalculator {
+            constructor(startDate, elementId) {
+                this.startDate = new Date(startDate);
+                this.element = document.getElementById(elementId);
+            }
+
+            update() {
+                const diff = Date.now() - this.startDate;
+                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+                const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                this.element.innerHTML = `
+                    ${years} 年 
+                    ${days} 天 
+                    ${hours.toString().padStart(2, '0')}时
+                    ${minutes.toString().padStart(2, '0')}分
+                    ${seconds.toString().padStart(2, '0')}秒
+                `;
+            }
+        }
+
+        // 初始化计时器
+          //成为朋友的时间
+        const friendsTimer = new TimeCalculator('2025-02-16', 'friendsTimer');
+          //认识的时间
+        const knowTimer = new TimeCalculator('2025-02-16', 'knowTimer');
+
+        function initTimers() {
+            friendsTimer.update();
+            knowTimer.update();
+            setInterval(() => {
+                friendsTimer.update();
+                knowTimer.update();
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', initTimers);
+        
+        //唤起分享界面
+          document.getElementById('shareButton').addEventListener('click', async () => {
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: '[分享的标题]',          // 分享的标题
+                  text: '[github-iheye]',     // 分享的描述
+                  url: 'https://github.com/iheye/Painting-memory/blob/main/LICENSE' // 分享的链接
+                });
+                console.log('分享成功');
+              } catch (error) {
+                console.error('分享失败:', error);
+              }
+            } else {
+              console.log('浏览器不支持分享功能');
+            }
+          });
+    </script>
+</body>
+</html>
