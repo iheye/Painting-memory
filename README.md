@@ -9,8 +9,8 @@
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/yourname/repo?style=for-the-badge&color=fd7e14)  
 ![GitHub Stars](https://img.shields.io/github/stars/yourname/repo?style=for-the-badge&color=ffd43b)  
 
-<a href="https://github.com/yourname/repo/stargazers">  
-  <img src="https://img.shields.io/github/stars/yourname/repo?style=social" alt="Star">  
+<a href="https://github.com/iheye/Painting-memory/stargazers">  
+  <img src="https://img.shields.io/github/stars/iheye/Painting-memory?style=social" alt="Star">  
 </a>
 
 </div>  
